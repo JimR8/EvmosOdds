@@ -473,7 +473,7 @@ window.onload = () => {
 		// Update the current slider value (each time you drag the slider handle)
 		sliderB.oninput = function() {
 			bet = this.value / 1000;
-	  	output.innerHTML = bet + " PHOTON's"";
+	  	output.innerHTML = bet + " PHOTON's";
 		}
 
 //odds slider
