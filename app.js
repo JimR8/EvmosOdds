@@ -481,7 +481,7 @@ window.onload = () => {
 		// Update the current slider value (each time you drag the slider handle)
 		sliderB.oninput = function() {
 			bet = this.value / 1000;
-			var winnings = (95 / 5) * bet
+			winnings = (95 / 5) * bet
 	  	outputB.innerHTML = bet + " PHOTON's";
 			outputW.innerHTML = winnings + " PHOTON's";
 		}
@@ -491,7 +491,8 @@ window.onload = () => {
 		// Update the current slider value (each time you drag the slider handle)
 		sliderO.oninput = function() {
 			var winnings = (95 / 5) * bet
-	  	outputO.innerHTML = this.value + "%";
+			winnings = (95 / 5) * bet
+	  	outputO.innerHTML = this.value + "% chance of winning";
 			outputW.innerHTML = winnings + " PHOTON's";
 		}
 
