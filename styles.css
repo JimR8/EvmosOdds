@@ -79,6 +79,7 @@ h2 {
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 100px;
 }
 
 .the_price {
@@ -112,6 +113,9 @@ h2 {
 }
 
 #button {
+  position: absolute;
+  top:5
+  right:5
   margin-bottom: 24px;
 }
 
