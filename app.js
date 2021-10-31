@@ -483,16 +483,16 @@ window.onload = () => {
 			bet = this.value / 1000;
 			winnings = (95 / sliderO.value) * bet
 	  	outputB.innerHTML = bet + " PHOTON's";
-			outputW.innerHTML = winnings + " PHOTON's";
+			outputW.innerHTML = winnings.toFixed(14) + " PHOTON's";
 		}
 
 
-		outputO.innerHTML = sliderO.value; // Display the default slider value
+		outputO.innerHTML = "50%"; // Display the default slider value
 		// Update the current slider value (each time you drag the slider handle)
 		sliderO.oninput = function() {
 			winnings = (95 / this.value) * (sliderB.value / 1000)
 	  	outputO.innerHTML = this.value + "% chance of winning";
-			outputW.innerHTML = winnings + " PHOTON's";
+			outputW.innerHTML = winnings.toFixed(14) + " PHOTON's";
 		}
 
 
