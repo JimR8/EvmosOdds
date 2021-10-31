@@ -29,14 +29,27 @@
 
     <p>Don't play well with others? Sick of waiting, Too tight to play EVMOS DICE? Hail Mary more your style? Strap in for EVMOS ODDS the flexible, low cost, single player experience you have been waiting for!!</p>
 
-    <div> Set your Bet size and odds</div>
+
     <div class="slidecontainer">
+    <span>Set your bet</span>
+    <input type="range" min="0.0001" max="0.001" value="0.0005" class="slider" id="sliderBet">
+    <br>
+    <span>Set your Odds</span>
     <input type="range" min="10" max="90" value="50" class="slider" id="sliderOdds">
     </div>
     <div>
-    <span>ODDS - Your chance of winning: </span>
+    <span>Your Bet size: </span>
+    <span class="odds" id="betValue"></span><br>
+    <span>Your chance of winning: </span>
     <span class="odds" id="oddsValue">50%</span>
+    <br><br>
+  </div>
+  <div>
+    <span>Potential Winnings: </span>
+    <span class="winnings" id="winValue"></span>
     </div>
+    <br>
+    <br>
 
     <div class="operation">
       <button id="roll" class="bubbly-button">Roll</button>

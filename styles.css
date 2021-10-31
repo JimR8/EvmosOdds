@@ -38,6 +38,12 @@ span{
   font-size: 25px
 }
 
+.winnings{
+  color:rgb(0, 255, 156 );
+  font-weight: bold;
+  font-size: 25px
+}
+
 input {
   width: 200px;
   z-index: 5;
@@ -162,13 +168,13 @@ a {
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
+  background: rgb(0, 255, 156); /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
+  background: rgb(0, 255, 156); /* Green background */
   cursor: pointer; /* Cursor on hover */
 }

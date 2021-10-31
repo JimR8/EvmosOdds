@@ -461,6 +461,20 @@ window.onload = () => {
     }, 700);
   };
 
+
+	//bet slider
+		var sliderB = document.getElementById("sliderBet");
+		var output = document.getElementById("betValue");
+			output.innerHTML = sliderB.value; // Display the default slider value
+
+		// Update the current slider value (each time you drag the slider handle)
+		sliderB.oninput = function() {
+	  	output.innerHTML = this.value + " PHOTON's"";
+		}
+
+
+
+//odds slider
 	var slider = document.getElementById("sliderOdds");
 	var output = document.getElementById("oddsValue");
 		output.innerHTML = slider.value; // Display the default slider value
