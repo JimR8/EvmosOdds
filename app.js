@@ -467,8 +467,7 @@ window.onload = () => {
 
 	// Update the current slider value (each time you drag the slider handle)
 	slider.oninput = function() {
-		var house = 100 - slider.value;
-  	output.innerHTML = this.value + " : "+ house;
+  	output.innerHTML = this.value + "%";
 	}
 
 
