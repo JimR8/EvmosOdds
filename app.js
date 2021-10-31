@@ -268,7 +268,7 @@ window.onload = () => {
         const estimateGas = await ImageContract.estimateGas.play(odds);
         const gasLimit = Math.floor(estimateGas.toNumber() * 2);
         const response = await ImageContract.play(odds,{value: ethers.utils.parseEther(amountRaw.toString())});
-				document.getElementById("wheel").visibility = "visibile";
+				document.getElementById("wheel").style.display = "none";
 				$.toast({
           heading: "Wheel",
           text: "Spinning!",
@@ -291,11 +291,11 @@ window.onload = () => {
           icon: "success",
         });
         document.getElementById("spin").innerHTML = "Spin";
-				document.getElementById("wheel").visibility = "visibile";
+				document.getElementById("wheel").style.display = "block";
         // window.open(`${etherscanUrl}/${result.transactionHash}`);
       } catch (e) {}
     }
   };
   document.getElementById("spin").addEventListener("click", handleSpin);
-	document.getElementById("wheel").visibility = "visibile";
+	document.getElementById("wheel").style.display = "block";
 };

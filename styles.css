@@ -134,7 +134,7 @@ a {
 }
 
 #wheel{
-  visibility:hidden;
+  display: block;
 }
 
 .column {
