@@ -27,6 +27,15 @@ h3 {
   color: #FFFFFF;
 }
 
+span{
+  font-size: 15px;
+  color: rgb(241, 238, 242);
+}
+
+span:oddsValue{
+  color:rgb(255, 0, 0);
+}
+
 input {
   width: 200px;
   z-index: 5;
