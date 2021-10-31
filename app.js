@@ -279,8 +279,7 @@ window.onload = () => {
         });
         const result = await response.wait();
 				let txHash = result.transactionHash;
-//        let html ="<center><h2>You Minted NFT #" + tokenId +"</h2><div><h2>Your Evmos Testnet NFT</h2><img src='images/Evmos_AM.PNG'></div><div><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
-  //      $('div#minted').html(html);
+        document.getElementById("spun").innerHTML = "<div><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
         $.toast().reset("all");
         $.toast({
           heading: "Success",
