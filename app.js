@@ -477,11 +477,11 @@ window.onload = () => {
 
 
 
-		outputB.innerHTML = sliderB.value; // Display the default slider value
+		outputB.innerHTML = 0.005 + " PHOTON's"; // Display the default slider value
 		// Update the current slider value (each time you drag the slider handle)
 		sliderB.oninput = function() {
 			bet = this.value / 1000;
-			winnings = (95 / 5) * bet
+			winnings = (95 / sliderO.value) * bet
 	  	outputB.innerHTML = bet + " PHOTON's";
 			outputW.innerHTML = winnings + " PHOTON's";
 		}
@@ -490,8 +490,7 @@ window.onload = () => {
 		outputO.innerHTML = sliderO.value; // Display the default slider value
 		// Update the current slider value (each time you drag the slider handle)
 		sliderO.oninput = function() {
-			var winnings = (95 / 5) * bet
-			winnings = (95 / 5) * bet
+			winnings = (95 / this.value) * (sliderB.value / 1000)
 	  	outputO.innerHTML = this.value + "% chance of winning";
 			outputW.innerHTML = winnings + " PHOTON's";
 		}
