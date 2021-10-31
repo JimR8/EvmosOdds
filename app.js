@@ -471,9 +471,10 @@ window.onload = () => {
 		var outputO = document.getElementById("oddsValue");
 		var sliderB = document.getElementById("sliderBet");
 		var outputB = document.getElementById("betValue");
-		var outputW = document.getElementById("winValue")
+		var outputW = document.getElementById("winValue");
+		var outputOL = document.getElementById("oddsLabel");
 		var bet = 0.005;
-		var winnings = (95 / 5) * bet
+		var winnings = (95 / 5) * bet;
 
 
 
@@ -481,7 +482,7 @@ window.onload = () => {
 		// Update the current slider value (each time you drag the slider handle)
 		sliderB.oninput = function() {
 			bet = this.value / 1000;
-			winnings = (95 / sliderO.value) * bet
+			winnings = (95 / sliderO.value) * bet;
 	  	outputB.innerHTML = bet + " PHOTON's";
 			outputW.innerHTML = winnings.toFixed(14) + " PHOTON's";
 		}
@@ -490,9 +491,10 @@ window.onload = () => {
 		outputO.innerHTML = "50%"; // Display the default slider value
 		// Update the current slider value (each time you drag the slider handle)
 		sliderO.oninput = function() {
-			winnings = (95 / this.value) * (sliderB.value / 1000)
+			winnings = (95 / this.value) * (sliderB.value / 1000);
 	  	outputO.innerHTML = this.value + "% chance of winning";
 			outputW.innerHTML = winnings.toFixed(14) + " PHOTON's";
+			outputOL.innerHTML = this.value;
 		}
 
 
