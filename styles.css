@@ -133,6 +133,10 @@ a {
   font-size: 18px;
 }
 
+#wheel{
+  visibility:hidden;
+}
+
 .column {
   float: left;
   width: 40%;

@@ -262,14 +262,14 @@ window.onload = () => {
         const signer = await provider.getSigner();
         const account = await signer.getAddress();
         const amountRaw = (sliderB.value / 1000).toString();
-				let overides = {value: ethers.utils.parseEther(amountRaw.toString())};
-        const ImageContract = new ethers.Contract(contractAddress, abi, signer, overides);
+        const ImageContract = new ethers.Contract(contractAddress, abi, signer);
         const balanceRaw = await provider.getBalance(account);
         const balance = ethers.utils.formatUnits(balanceRaw, 18);
         const estimateGas = await ImageContract.estimateGas.play(odds);
         const gasLimit = Math.floor(estimateGas.toNumber() * 2);
-        const response = await ImageContract.play(odds);
-        $.toast({
+        const response = await ImageContract.play(odds,{value: ethers.utils.parseEther(amountRaw.toString())});
+				document.getElementById("wheel").visibility = "visibile";
+				$.toast({
           heading: "Wheel",
           text: "Spinning!",
           position: "top-center",
@@ -291,9 +291,11 @@ window.onload = () => {
           icon: "success",
         });
         document.getElementById("spin").innerHTML = "Spin";
+				document.getElementById("wheel").visibility = "visibile";
         // window.open(`${etherscanUrl}/${result.transactionHash}`);
       } catch (e) {}
     }
   };
   document.getElementById("spin").addEventListener("click", handleSpin);
+	document.getElementById("wheel").visibility = "visibile";
 };
