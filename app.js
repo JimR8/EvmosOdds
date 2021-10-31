@@ -278,14 +278,13 @@ window.onload = () => {
           icon: "info",
         });
         const result = await response.wait();
-				let tokenId = result.events[0].args._tokenId.toString();
 				let txHash = result.transactionHash;
-        let html ="<center><h2>You Minted NFT #" + tokenId +"</h2><div><h2>Your Evmos Testnet NFT</h2><img src='images/Evmos_AM.PNG'></div><div><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
-        $('div#minted').html(html);
+//        let html ="<center><h2>You Minted NFT #" + tokenId +"</h2><div><h2>Your Evmos Testnet NFT</h2><img src='images/Evmos_AM.PNG'></div><div><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
+  //      $('div#minted').html(html);
         $.toast().reset("all");
         $.toast({
           heading: "Success",
-          text: "Minted Success!",
+          text: "Spin Finished!",
           showHideTransition: "slide",
           position: "top-center",
           icon: "success",
@@ -293,9 +292,12 @@ window.onload = () => {
         document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
         // window.open(`${etherscanUrl}/${result.transactionHash}`);
-      } catch (e) {}
+      } catch (e) {
+				document.getElementById("spin").innerHTML = "Spin";
+				document.getElementById("wheel").style.display = "none";
+
+			}
     }
   };
   document.getElementById("spin").addEventListener("click", handleSpin);
-	document.getElementById("wheel").style.display = "none";
 };
