@@ -113,9 +113,8 @@ h2 {
 }
 
 #button{
-  position:absolute;
-  top:10;
-  right:10;
+  margin-bottom: 25px;
+  margin-top:25px;
 }
 
 .operation {
