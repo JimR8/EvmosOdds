@@ -463,16 +463,18 @@ window.onload = () => {
 
 
 	//bet slider
+	//1 photon = 1000000000000000000
+	// default bet = 5000000000000000 (0.005)
 		var sliderB = document.getElementById("sliderBet");
 		var output = document.getElementById("betValue");
+		var bet = 0.005;
 			output.innerHTML = sliderB.value; // Display the default slider value
 
 		// Update the current slider value (each time you drag the slider handle)
 		sliderB.oninput = function() {
-	  	output.innerHTML = this.value + " PHOTON's"";
+			bet = this.value / 1000;
+	  	output.innerHTML = bet + " PHOTON's"";
 		}
-
-
 
 //odds slider
 	var slider = document.getElementById("sliderOdds");
