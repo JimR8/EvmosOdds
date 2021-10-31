@@ -252,13 +252,13 @@ window.onload = () => {
 
 
 
-  const spin = async () => {
+  const handleSpin = async () => {
     $.toast().reset("all");
     if (!provider) {
       connectWallet();
     } else {
       try {
-        document.getElementById("mint").innerHTML = "Spinning...";
+        document.getElementById("spin").innerHTML = "Spinning...";
         const signer = await provider.getSigner();
         const account = await signer.getAddress();
         const ImageContract = new ethers.Contract(contractAddress, abi, signer);
@@ -290,10 +290,10 @@ window.onload = () => {
           position: "top-center",
           icon: "success",
         });
-        document.getElementById("mint").innerHTML = "Mint";
+        document.getElementById("spin").innerHTML = "Spin";
         // window.open(`${etherscanUrl}/${result.transactionHash}`);
       } catch (e) {}
     }
   };
-  document.getElementById("mint").addEventListener("click", handleMint);
+  document.getElementById("spin").addEventListener("click", handleSpin);
 };
