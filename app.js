@@ -267,7 +267,7 @@ window.onload = () => {
         const balance = ethers.utils.formatUnits(balanceRaw, 18);
         const estimateGas = await ImageContract.estimateGas.play(odds);
         const gasLimit = Math.floor(estimateGas.toNumber() * 2);
-
+				ImageContract.value = amountRaw;
         const response = await ImageContract.play(odds);
         $.toast({
           heading: "Wheel",
