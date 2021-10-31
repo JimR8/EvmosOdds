@@ -3,451 +3,110 @@ const chainId = 9000;//test net
 const price = 0;
 let address;
 
-const contractAddress = "0x79C17Cc3274F00F8A1fC50AC055823c19d85b87D";
+const contractAddress = "0x79F1E8205A355501ECfac0b4eaa3bA931D679aA1";
 const etherscanUrl = "https://evm.evmos.org/tx";
 let provider = null;
 
 const abi = [
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_approved",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Approval",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_operator",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "bool",
-				"name": "_approved",
-				"type": "bool"
-			}
-		],
-		"name": "ApprovalForAll",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_approved",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "approve",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "mint",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes",
-				"name": "_data",
-				"type": "bytes"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_operator",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "_approved",
-				"type": "bool"
-			}
-		],
-		"name": "setApprovalForAll",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "transferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_owner",
-				"type": "address"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "CANNOT_TRANSFER_TO_ZERO_ADDRESS",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "counter",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "getApproved",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_owner",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "NOT_CURRENT_OWNER",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "ownerOf",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "_owner",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes4",
-				"name": "_interfaceID",
-				"type": "bytes4"
-			}
-		],
-		"name": "supportsInterface",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "_symbol",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenURI",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "url",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-];
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "maxBet",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "playerSpin",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint8"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "house",
+					"type": "uint8"
+				}
+			],
+			"name": "play",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [],
+			"name": "collectFunds",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "houseBalance",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "collector",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "newMaxBet",
+					"type": "uint256"
+				}
+			],
+			"name": "changeMaxBet",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "fallback"
+		}
+	];
 
 window.onload = () => {
   var animateButton = function (e) {
@@ -474,6 +133,7 @@ window.onload = () => {
 		var outputW = document.getElementById("winValue");
 		var outputOL = document.getElementById("oddsLabel");
 		var bet = 0.005;
+		var odds = 50;
 		var winnings = (95 / 5) * bet;
 
 
@@ -493,6 +153,7 @@ window.onload = () => {
 		sliderO.oninput = function() {
 			winnings = (95 / this.value) * (sliderB.value / 1000);
 	  	outputO.innerHTML = this.value + "% chance of winning";
+			odds = this.value;
 			outputW.innerHTML = winnings.toFixed(14) + " PHOTON's";
 			outputOL.innerHTML = this.value;
 		}
@@ -591,35 +252,34 @@ window.onload = () => {
 
 
 
-  const handleMint = async () => {
+  const spin = async () => {
     $.toast().reset("all");
     if (!provider) {
       connectWallet();
     } else {
       try {
-        document.getElementById("mint").innerHTML = "Minting...";
+        document.getElementById("mint").innerHTML = "Spinning...";
         const signer = await provider.getSigner();
         const account = await signer.getAddress();
-        const inputValue = "1";
         const ImageContract = new ethers.Contract(contractAddress, abi, signer);
-        const amountRaw = ethers.utils.parseUnits(`${price * inputValue}`, 18).toString();
+        const amountRaw = (sliderB.value / 1000).toString();
         const balanceRaw = await provider.getBalance(account);
         const balance = ethers.utils.formatUnits(balanceRaw, 18);
-        const estimateGas = await ImageContract.estimateGas.mint();
+        const estimateGas = await ImageContract.estimateGas.play(odds);
         const gasLimit = Math.floor(estimateGas.toNumber() * 2);
 
-        const response = await ImageContract.mint();
+        const response = await ImageContract.play(odds);
         $.toast({
-          heading: "Minting",
-          text: "Start to minting！",
+          heading: "Wheel",
+          text: "Spinning!",
           position: "top-center",
           showHideTransition: "fade",
           hideAfter: 10000,
           icon: "info",
         });
         const result = await response.wait();
-	let tokenId = result.events[0].args._tokenId.toString();
-	let txHash = result.transactionHash;
+				let tokenId = result.events[0].args._tokenId.toString();
+				let txHash = result.transactionHash;
         let html ="<center><h2>You Minted NFT #" + tokenId +"</h2><div><h2>Your Evmos Testnet NFT</h2><img src='images/Evmos_AM.PNG'></div><div><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
         $('div#minted').html(html);
         $.toast().reset("all");
