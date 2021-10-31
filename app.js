@@ -463,11 +463,12 @@ window.onload = () => {
 
 	var slider = document.getElementById("sliderOdds");
 	var output = document.getElementById("oddsValue");
+	var house = output - 100;
 	output.innerHTML = slider.value; // Display the default slider value
 
 	// Update the current slider value (each time you drag the slider handle)
 	slider.oninput = function() {
-  	output.innerHTML = this.value +":"" 100-this.value;
+  	output.innerHTML = this.value +" : " house;
 	}
 
 
