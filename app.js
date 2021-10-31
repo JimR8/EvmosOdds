@@ -461,6 +461,17 @@ window.onload = () => {
     }, 700);
   };
 
+	var slider = document.getElementById("sliderOdds");
+	var output = document.getElementById("oddsValue");
+	output.innerHTML = slider.value; // Display the default slider value
+
+	// Update the current slider value (each time you drag the slider handle)
+	slider.oninput = function() {
+  	output.innerHTML = this.value;
+	}
+
+
+
   var bubblyButtons = document.getElementsByClassName("bubbly-button");
 
   for (var i = 0; i < bubblyButtons.length; i++) {
