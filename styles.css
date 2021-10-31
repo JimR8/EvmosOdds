@@ -112,11 +112,10 @@ h2 {
   line-height: 18px;
 }
 
-#button {
-  position: absolute;
-  top:10 px;
-  right:10 px;
-  margin-bottom: 24px;
+#button{
+  position:absolute;
+  top:10;
+  right:10;
 }
 
 .operation {
