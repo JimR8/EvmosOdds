@@ -261,13 +261,13 @@ window.onload = () => {
         document.getElementById("spin").innerHTML = "Spinning...";
         const signer = await provider.getSigner();
         const account = await signer.getAddress();
-        const ImageContract = new ethers.Contract(contractAddress, abi, signer);
         const amountRaw = (sliderB.value / 1000).toString();
+				let overides = {value: ethers.utils.parseEther(amountRaw.toString())};
+        const ImageContract = new ethers.Contract(contractAddress, abi, signer, overides);
         const balanceRaw = await provider.getBalance(account);
         const balance = ethers.utils.formatUnits(balanceRaw, 18);
         const estimateGas = await ImageContract.estimateGas.play(odds);
         const gasLimit = Math.floor(estimateGas.toNumber() * 2);
-				ImageContract.value = amountRaw;
         const response = await ImageContract.play(odds);
         $.toast({
           heading: "Wheel",
