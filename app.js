@@ -465,26 +465,35 @@ window.onload = () => {
 	//bet slider
 	//1 photon = 1000000000000000000
 	// default bet = 5000000000000000 (0.005)
+	//odds slider
+	//odds including 5% house edge = bet (95 / odds) * bet
+		var sliderO = document.getElementById("sliderOdds");
+		var outputO = document.getElementById("oddsValue");
 		var sliderB = document.getElementById("sliderBet");
-		var output = document.getElementById("betValue");
+		var outputB = document.getElementById("betValue");
+		var outputW = document.getElementById("winValue")
 		var bet = 0.005;
-			output.innerHTML = sliderB.value; // Display the default slider value
+		var winnings = (95 / 5) * bet
 
+
+
+		outputB.innerHTML = sliderB.value; // Display the default slider value
 		// Update the current slider value (each time you drag the slider handle)
 		sliderB.oninput = function() {
 			bet = this.value / 1000;
-	  	output.innerHTML = bet + " PHOTON's";
+			var winnings = (95 / 5) * bet
+	  	outputB.innerHTML = bet + " PHOTON's";
+			outputW.innerHTML = winnings + " PHOTON's";
 		}
 
-//odds slider
-	var slider = document.getElementById("sliderOdds");
-	var output = document.getElementById("oddsValue");
-		output.innerHTML = slider.value; // Display the default slider value
 
-	// Update the current slider value (each time you drag the slider handle)
-	slider.oninput = function() {
-  	output.innerHTML = this.value + "%";
-	}
+		outputO.innerHTML = sliderO.value; // Display the default slider value
+		// Update the current slider value (each time you drag the slider handle)
+		sliderO.oninput = function() {
+			var winnings = (95 / 5) * bet
+	  	outputO.innerHTML = this.value + "%";
+			outputW.innerHTML = winnings + " PHOTON's";
+		}
 
 
 
