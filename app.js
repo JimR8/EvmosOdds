@@ -281,6 +281,7 @@ window.onload = () => {
           icon: "info",
         });
         const result = await response.wait();
+				setTimeout(function, 1000);
 				const balanceRaw2 = await provider.getBalance(account);
 				var playerResult = "lost";
 				if (balanceRaw2 > balanceRaw){
