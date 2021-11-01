@@ -253,9 +253,6 @@ window.onload = () => {
 
 
   const handleSpin = async () => {
-		if ($.toast().text == "Spinning!"){
-			break;
-		}
 		$.toast().reset("all");
 		document.getElementById("winner").style.display = "none";
 		document.getElementById("sorry").style.display = "none";
