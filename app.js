@@ -283,7 +283,7 @@ window.onload = () => {
         const result = await response.wait();
 				var now = Date.now();
 				var end = now + 1000;
-				while <now < end) {now = Date.now();}
+				while (now < end) {now = Date.now();}
 				const balanceRaw2 = await provider.getBalance(account);
 				var playerResult = "lost";
 				if (balanceRaw2 > balanceRaw){
