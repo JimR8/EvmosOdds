@@ -136,6 +136,12 @@ a {
 #wheel{
   display: none;
 }
+#winner{
+  display: none;
+}
+#sorry{
+  display: none;
+}
 
 .column {
   float: left;

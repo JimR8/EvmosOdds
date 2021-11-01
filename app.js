@@ -254,6 +254,9 @@ window.onload = () => {
 
   const handleSpin = async () => {
     $.toast().reset("all");
+		document.getElementById("winner").style.display = "none";
+		document.getElementById("sorry").style.display = "none";
+		document.getElementById("spun").innerHTML = "";
     if (!provider) {
       connectWallet();
     } else {
@@ -278,6 +281,15 @@ window.onload = () => {
           icon: "info",
         });
         const result = await response.wait();
+				const balanceRaw2 = await provider.getBalance(account);
+				var result = "lost";
+				if (balanceRaw2 > balanceRaw){
+					result = "win";
+					document.getElementById("winner").style.display = "block";
+				}else{
+					result = "lost";
+					document.getElementById("sorry").style.display = "block";
+				};
 				let txHash = result.transactionHash;
         document.getElementById("spun").innerHTML = "<div><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
         $.toast().reset("all");
