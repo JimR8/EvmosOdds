@@ -3,7 +3,7 @@ const chainId = 9000;//test net
 const price = 0;
 let address;
 
-const contractAddress = "0x03222aFa2e2f3c5ea3e3ebfF71653B172231A419";
+const contractAddress = "0x22c81Ee5e3F82E7F7845213FdE6a47E48F8aE0a6";
 const etherscanUrl = "https://evm.evmos.org/tx";
 let provider = null;
 
@@ -253,7 +253,10 @@ window.onload = () => {
 
 
   const handleSpin = async () => {
-    $.toast().reset("all");
+		if ($.toast().text == "Spinning!"){
+			break;
+		}
+		$.toast().reset("all");
 		document.getElementById("winner").style.display = "none";
 		document.getElementById("sorry").style.display = "none";
 		document.getElementById("spun").innerHTML = "";
@@ -262,6 +265,7 @@ window.onload = () => {
     } else {
       try {
         document.getElementById("spin").innerHTML = "Spinning...";
+				document.getElementById("spin").disabled = true;
         const signer = await provider.getSigner();
         const account = await signer.getAddress();
         const amountRaw = (sliderB.value / 1000).toString();
@@ -305,10 +309,12 @@ window.onload = () => {
         });
         document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
+				document.getElementById("spin").disabled = false;
         // window.open(`${etherscanUrl}/${result.transactionHash}`);
       } catch (e) {
 				document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
+				document.getElementById("spin").disabled = false;
 
 			}
     }

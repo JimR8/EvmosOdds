@@ -143,6 +143,9 @@ a {
   display: none;
 }
 
+#spun{
+  text-align: right;
+}
 .column {
   float: left;
   width: 40%;
