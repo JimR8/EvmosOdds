@@ -113,8 +113,8 @@ h2 {
 }
 
 #button{
-  margin-bottom: 25px;
-  margin-top:25px;
+  margin-bottom: 5px;
+  margin-top:5px;
 }
 
 .operation {
@@ -144,7 +144,7 @@ a {
 }
 
 #spun{
-  text-align: right;
+  text-align: center;
 }
 .column {
   float: left;
