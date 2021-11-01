@@ -282,12 +282,12 @@ window.onload = () => {
         });
         const result = await response.wait();
 				const balanceRaw2 = await provider.getBalance(account);
-				var result = "lost";
+				var playerResult = "lost";
 				if (balanceRaw2 > balanceRaw){
-					result = "win";
+					playerResult = "win";
 					document.getElementById("winner").style.display = "block";
 				}else{
-					result = "lost";
+					playerResult = "lost";
 					document.getElementById("sorry").style.display = "block";
 				};
 				let txHash = result.transactionHash;
