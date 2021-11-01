@@ -137,7 +137,7 @@ window.onload = () => {
 		var winnings = (95 / 5) * bet;
 
 
-
+		outputW.innerHTML = "0.0095 PHOTON's";
 		outputB.innerHTML = 0.005 + " PHOTON's"; // Display the default slider value
 		// Update the current slider value (each time you drag the slider handle)
 		sliderB.oninput = function() {
@@ -281,7 +281,9 @@ window.onload = () => {
           icon: "info",
         });
         const result = await response.wait();
-				setTimeout(function, 1000);
+				var now = Date.now();
+				var end = now + 1000;
+				while <now < end) {now = Date.now();}
 				const balanceRaw2 = await provider.getBalance(account);
 				var playerResult = "lost";
 				if (balanceRaw2 > balanceRaw){
