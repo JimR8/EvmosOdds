@@ -309,7 +309,7 @@ window.onload = () => {
 				document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
 				document.getElementById("spin").disabled = false;
-
+				document.getElementById("spun").innerHTML = "<div><span>Transaction Failed </span><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
 			}
     }
   };
