@@ -3,7 +3,7 @@ const chainId = 9000;//test net
 const price = 0;
 let address;
 
-const contractAddress = "0x11d1756131f457D883eb8daD16C6F080D9078d49";
+const contractAddress = "0x7f075C5A79d353bc22205A77d2Ad85E27deb4535";
 const etherscanUrl = "https://evm.evmos.org/tx";
 let provider = null;
 
@@ -331,7 +331,7 @@ window.onload = () => {
         const balanceRaw = await provider.getBalance(account);
         const balance = ethers.utils.formatUnits(balanceRaw, 18);
         const estimateGas = await ImageContract.estimateGas.play(odds);
-        const gasLimit = Math.floor(estimateGas.toNumber() * 3);
+        const gasLimit = Math.floor(estimateGas.toNumber() * 2);
         const response = await ImageContract.play(odds,{value: ethers.utils.parseEther(amountRaw.toString())});
 				document.getElementById("wheel").style.display = "block";
 				$.toast({
