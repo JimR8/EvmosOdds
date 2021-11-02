@@ -28,8 +28,9 @@ contract EvmosOdds{
         lastWinAmount = winAmount;
         lastOdds = house;
 
-    	if(winAmount*2 > houseBalance || msg.value > maxBet){
+    	if(winAmount > houseBalance || msg.value > maxBet){
     		msg.sender.transfer(msg.value);
+    		revert("House cannot support that size bet at the moment.");
             clean();
     	}else{
           betAmount = msg.value;
