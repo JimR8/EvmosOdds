@@ -283,7 +283,6 @@ window.onload = () => {
         });
         const result = await response.wait();
 				const balanceRaw2 = await provider.getBalance(account);
-				const response1 = await ImageContract.lastPlayerSpin();
 				var playerResult = "lost";
 				if (balanceRaw2 > balanceRaw){
 					playerResult = "win";
