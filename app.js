@@ -319,26 +319,14 @@ window.onload = () => {
 				document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
 				document.getElementById("spin").disabled = false;
-				if (e.data.message.toSting().includes("House",1)){
 					$.toast({
 						heading: "Error",
-						text: "Sorry the contract does not have enough funds for payout of that size",
+						text: e.data.message.toSting(),
 						position: "top-center",
 						showHideTransition: "fade",
 						hideAfter: 5000,
 						icon: "error",
 					});
-				}else{
-					$.toast({
-						heading: "Error",
-						text: "Transaction failed - Something went wrong.",
-						position: "top-center",
-						showHideTransition: "fade",
-						hideAfter: 5000,
-						icon: "error",
-					});
-				}
-
 			}
     }
   };
