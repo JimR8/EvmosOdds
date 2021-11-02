@@ -272,7 +272,6 @@ window.onload = () => {
         const estimateGas = await ImageContract.estimateGas.play(odds);
         const gasLimit = Math.floor(estimateGas.toNumber() * 2);
         const response = await ImageContract.play(odds,{value: ethers.utils.parseEther(amountRaw.toString())});
-				const response1 = await ImageContract.lastPlayerSpin();
 				document.getElementById("wheel").style.display = "block";
 				$.toast({
           heading: "Wheel Spinning",
@@ -284,6 +283,7 @@ window.onload = () => {
         });
         const result = await response.wait();
 				const balanceRaw2 = await provider.getBalance(account);
+				const response1 = await ImageContract.lastPlayerSpin();
 				var playerResult = "lost";
 				if (balanceRaw2 > balanceRaw){
 					playerResult = "win";
@@ -319,7 +319,7 @@ window.onload = () => {
 				document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
 				document.getElementById("spin").disabled = false;
-				if (e.data.message.includes('House')){
+				if (e.data.message.toSting().includes("House",1)){
 					$.toast({
 						heading: "Error",
 						text: "Sorry the contract does not have enough funds for payout of that size",
