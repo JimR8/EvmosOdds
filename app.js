@@ -274,8 +274,8 @@ window.onload = () => {
         const response = await ImageContract.play(odds,{value: ethers.utils.parseEther(amountRaw.toString())});
 				document.getElementById("wheel").style.display = "block";
 				$.toast({
-          heading: "Wheel",
-          text: "Spinning!",
+          heading: "Wheel Spinning",
+          text: "Good luck!",
           position: "top-center",
           showHideTransition: "fade",
           hideAfter: 10000,
@@ -321,7 +321,7 @@ window.onload = () => {
 				if (e.data.message.includes('House')){
 					$.toast({
 						heading: "Error",
-						text: "Contract does not have enough funds for that payout",
+						text: "Sorry the contract does not have enough funds for payout of that size",
 						position: "top-center",
 						showHideTransition: "fade",
 						hideAfter: 5000,
@@ -330,7 +330,7 @@ window.onload = () => {
 				}else{
 					$.toast({
 						heading: "Error",
-						text: "Transaction failed",
+						text: "Transaction failed - Something went wrong.",
 						position: "top-center",
 						showHideTransition: "fade",
 						hideAfter: 5000,
