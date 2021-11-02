@@ -287,20 +287,29 @@ window.onload = () => {
 				if (balanceRaw2 > balanceRaw){
 					playerResult = "win";
 					document.getElementById("winner").style.display = "block";
+					$.toast().reset("all");
+	        $.toast({
+	          heading: "Winner!",
+	          text: "Congratulations!",
+	          showHideTransition: "slide",
+	          position: "top-center",
+	          icon: "success",
+	        });
+
 				}else{
 					playerResult = "lost";
 					document.getElementById("sorry").style.display = "block";
+					$.toast().reset("all");
+					$.toast({
+						heading: "Lost",
+						text: "Better luck next time",
+						showHideTransition: "slide",
+						position: "top-center",
+						icon: "info",
+					});
 				};
 				let txHash = result.transactionHash;
         document.getElementById("spun").innerHTML = "<div><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
-        $.toast().reset("all");
-        $.toast({
-          heading: "Success",
-          text: "Spin Finished!",
-          showHideTransition: "slide",
-          position: "top-center",
-          icon: "success",
-        });
         document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
 				document.getElementById("spin").disabled = false;
@@ -309,7 +318,26 @@ window.onload = () => {
 				document.getElementById("spin").innerHTML = "Spin";
 				document.getElementById("wheel").style.display = "none";
 				document.getElementById("spin").disabled = false;
-				document.getElementById("spun").innerHTML = "<div><span>Transaction Failed </span><a href='https://evm.evmos.org/tx/"+ txHash +"' target='_blank'> View on Block Explorer</a></center></div>";
+				if (e.data.message.includes('House')){
+					$.toast({
+						heading: "Error",
+						text: "Contract does not have enough funds for that payout",
+						position: "top-center",
+						showHideTransition: "fade",
+						hideAfter: 5000,
+						icon: "error",
+					});
+				}else{
+					$.toast({
+						heading: "Error",
+						text: "Transaction failed",
+						position: "top-center",
+						showHideTransition: "fade",
+						hideAfter: 5000,
+						icon: "error",
+					});
+				}
+
 			}
     }
   };
