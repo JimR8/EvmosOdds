@@ -61,6 +61,7 @@ contract EvmosOdds{
         }else{
 		    houseBalance += betAmount;
 		    lastresult = "House Wins";
+
 	    }
     }
 
