@@ -33,13 +33,13 @@ span{
 }
 
 .odds{
-  color:rgb(255, 0, 0 );
+  color:rgb(237, 81, 37);
   font-weight: bold;
   font-size: 25px
 }
 
 .winnings{
-  color:rgb(0, 255, 156 );
+  color:rgb(81, 133, 239 );
   font-weight: bold;
   font-size: 25px
 }
@@ -186,7 +186,7 @@ a {
   width: 30px; /* Set a specific slider handle width */
   height: 30px; /* Slider handle height */
   border-radius: 50%;
-  background: rgb(0, 255, 156); /* Green background */
+  background: rgb(237, 81, 37); /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -194,6 +194,6 @@ a {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   border-radius: 50%;
-  background: rgb(0, 255, 156); /* Green background */
+  background: rgb(237, 81, 37); /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
