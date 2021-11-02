@@ -148,7 +148,7 @@ window.onload = () => {
 		}
 
 
-		outputO.innerHTML = "50%"; // Display the default slider value
+		outputO.innerHTML = "50% chance of winning"; // Display the default slider value
 		// Update the current slider value (each time you drag the slider handle)
 		sliderO.oninput = function() {
 			winnings = (95 / this.value) * (sliderB.value / 1000);
