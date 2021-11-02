@@ -3,110 +3,171 @@ const chainId = 9000;//test net
 const price = 0;
 let address;
 
-const contractAddress = "0xc92B34923194bF59417A7178775A59D8a4362c99";
+const contractAddress = "0xadD59919526DfaFbbE62a10cD26f2120Ca0716C4";
 const etherscanUrl = "https://evm.evmos.org/tx";
 let provider = null;
 
 const abi = [
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "maxBet",
-			"outputs": [
-				{
-					"name": "",
-					"type": "uint256"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "playerSpin",
-			"outputs": [
-				{
-					"name": "",
-					"type": "uint8"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [
-				{
-					"name": "house",
-					"type": "uint8"
-				}
-			],
-			"name": "play",
-			"outputs": [],
-			"payable": true,
-			"stateMutability": "payable",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [],
-			"name": "collectFunds",
-			"outputs": [],
-			"payable": true,
-			"stateMutability": "payable",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "houseBalance",
-			"outputs": [
-				{
-					"name": "",
-					"type": "uint256"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "collector",
-			"outputs": [
-				{
-					"name": "",
-					"type": "address"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [
-				{
-					"name": "newMaxBet",
-					"type": "uint256"
-				}
-			],
-			"name": "changeMaxBet",
-			"outputs": [],
-			"payable": true,
-			"stateMutability": "payable",
-			"type": "function"
-		},
-		{
-			"payable": true,
-			"stateMutability": "payable",
-			"type": "fallback"
-		}
-	];
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "maxBet",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "playerSpin",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "house",
+				"type": "uint8"
+			}
+		],
+		"name": "play",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "collectFunds",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "houseBalance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "lastPlayerSpin",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "lastOdds",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "collector",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "lastWinAmount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "newMaxBet",
+				"type": "uint256"
+			}
+		],
+		"name": "changeMaxBet",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "lastresult",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	}
+];
 
 window.onload = () => {
   var animateButton = function (e) {
@@ -270,7 +331,7 @@ window.onload = () => {
         const balanceRaw = await provider.getBalance(account);
         const balance = ethers.utils.formatUnits(balanceRaw, 18);
         const estimateGas = await ImageContract.estimateGas.play(odds);
-        const gasLimit = Math.floor(estimateGas.toNumber() * 2);
+        const gasLimit = Math.floor(estimateGas.toNumber() * 3);
         const response = await ImageContract.play(odds,{value: ethers.utils.parseEther(amountRaw.toString())});
 				document.getElementById("wheel").style.display = "block";
 				$.toast({
@@ -283,7 +344,6 @@ window.onload = () => {
         });
         const result = await response.wait();
 				const balanceRaw2 = await provider.getBalance(account);
-				var playerLastSpin = await ImageContract.playerLastSpin();
 				var playerResult = "lost";
 				if (balanceRaw2 > balanceRaw){
 					playerResult = "win";
@@ -321,7 +381,7 @@ window.onload = () => {
 				document.getElementById("spin").disabled = false;
 					$.toast({
 						heading: "Error",
-						text: e.data.message.toSting(),
+						text: "Transaction failed - Something went wrong",
 						position: "top-center",
 						showHideTransition: "fade",
 						hideAfter: 5000,
