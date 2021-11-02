@@ -272,7 +272,7 @@ window.onload = () => {
         const estimateGas = await ImageContract.estimateGas.play(odds);
         const gasLimit = Math.floor(estimateGas.toNumber() * 2);
         const response = await ImageContract.play(odds,{value: ethers.utils.parseEther(amountRaw.toString())});
-				uint8 playerLastSpin = await ImageContract.playerLastSpin();
+				var playerLastSpin = await ImageContract.playerLastSpin();
 				document.getElementById("wheel").style.display = "block";
 				$.toast({
           heading: "Wheel Spinning",
