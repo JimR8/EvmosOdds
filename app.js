@@ -3,7 +3,7 @@ const chainId = 9000;//test net
 const price = 0;
 let address;
 
-const contractAddress = "0xc781399fdD4aFd9EDFe5F97Bae6c51c33b32e9ee";
+const contractAddress = "0xAe7383CcfD68Bc79a4c13DE7d31eAd83399b433F";
 const etherscanUrl = "https://evm.evmos.org/tx";
 let provider = null;
 
