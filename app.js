@@ -311,6 +311,17 @@ window.onload = () => {
 
   connectWallet();
 
+const handleWithdraw = async () => {
+	const signer = await provider.getSigner();
+	const account = await signer.getAddress();
+	const amountRaw = "0";
+	const ImageContract1 = new ethers.Contract(contractAddress, abi, signer);
+	const balanceRaw = await provider.getBalance(account);
+	const balance = ethers.utils.formatUnits(balanceRaw, 18);
+	const estimateGas = await ImageContract.estimateGas.withdraw();
+	const gasLimit = Math.floor(estimateGas.toNumber() * 2);
+	const response = await ImageContract.withdraw();
+}
 
 
   const handleSpin = async () => {
@@ -391,4 +402,5 @@ window.onload = () => {
     }
   };
   document.getElementById("spin").addEventListener("click", handleSpin);
+	document.getElementById("withdraw").addEventListener("click", handleWithdraw);
 };
