@@ -34,7 +34,8 @@ contract EvmosOdds{
     		msg.sender.transfer(msg.value);
     	}else{
           betAmount = msg.value;
-          playerSpin = Spin(msg.sender);
+          //playerSpin = Spin(msg.sender);
+          playerSpin = 5;
           checkAndFundWinner(house);
     	  lastPlayerSpin = playerSpin;
 

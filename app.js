@@ -3,7 +3,7 @@ const chainId = 9000;//test net
 const price = 0;
 let address;
 
-const contractAddress = "0x7f075C5A79d353bc22205A77d2Ad85E27deb4535";
+const contractAddress = "0x08dcac9A7EC481F96176d58a500ae48BccCA985D";
 const etherscanUrl = "https://evm.evmos.org/tx";
 let provider = null;
 
@@ -310,7 +310,7 @@ window.onload = () => {
   document.getElementById("button").addEventListener("click", switchNetwork);
 
   connectWallet();
-
+//this function only works from the collectors account
 const handleWithdraw = async () => {
 	const signer = await provider.getSigner();
 	const account = await signer.getAddress();
