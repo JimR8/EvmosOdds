@@ -318,9 +318,9 @@ const handleWithdraw = async () => {
 	const ImageContract1 = new ethers.Contract(contractAddress, abi, signer);
 	const balanceRaw = await provider.getBalance(account);
 	const balance = ethers.utils.formatUnits(balanceRaw, 18);
-	const estimateGas = await ImageContract1.estimateGas.withdraw();
+	const estimateGas = await ImageContract1.estimateGas.collectFunds();
 	const gasLimit = Math.floor(estimateGas.toNumber() * 2);
-	const response = await ImageContract1.withdraw();
+	const response = await ImageContract1.collectFunds();
 }
 
 
