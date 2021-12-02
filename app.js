@@ -263,13 +263,13 @@ window.onload = () => {
           params: [
             {
               chainId: "9000",
-              chainName: "Evmos Testnet",
+              chainName: "Evmos OM Testnet",
               nativeCurrency: {
                 name: "PHOTON",
                 symbol: "PHOTON",
                 decimals: 18,
               },
-              rpcUrls: ["http://arsiamons.rpc.evmos.org:8545"],
+              rpcUrls: ["https://evmos-evm-rpc.tk"],
               blockExplorerUrls: ["https://evm.evmos.org"],
             },
           ],
@@ -287,13 +287,13 @@ window.onload = () => {
           params: [
             {
               chainId: "9000",
-              chainName: "Evmos Testnet",
+              chainName: "Evmos OM Testnet",
               nativeCurrency: {
                 name: "PHOTON",
                 symbol: "PHOTON",
                 decimals: 18,
               },
-              rpcUrls: ["http://arsiamons.rpc.evmos.org:8545"],
+              rpcUrls: ["https://evmos-evm-rpc.tk"],
               blockExplorerUrls: ["https://evm.evmos.org"],
             },
           ],
