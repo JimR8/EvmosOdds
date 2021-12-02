@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 contract EvmosOdds{
 
-    address public collector = 0x7Fb4B2b6540C5A9e3c1b81BFBC537816731DF8b8; //Evmos testnet
+    address public collector = 0xFb93CC2bF857b763909050B0D7816bC3b736E8DE; //Evmos testnet
     uint8 public playerSpin;
     uint256 public betAmount;
     uint256 public winAmount;
