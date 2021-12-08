@@ -319,7 +319,7 @@ const handleWithdraw = async () => {
 	const balanceRaw = await provider.getBalance(account);
 	const balance = ethers.utils.formatUnits(balanceRaw, 18);
 	const estimateGas = await ImageContract1.estimateGas.collectFunds();
-	const gasLimit = Math.floor(estimateGas.toNumber() * 2);
+	const gasLimit = Math.floor(estimateGas.toNumber() * 4);
 	const response = await ImageContract1.collectFunds();
 }
 
